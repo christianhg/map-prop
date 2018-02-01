@@ -1,0 +1,58 @@
+{
+  "name": "map-prop",
+  "description": "Maps a property on an Object and returns a new Object",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "christianhg/map-prop",
+  "author": {
+    "name": "Christian Hamburger Grøngaard",
+    "email": "christianhg@gmail.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "coverage": "jest && cat ./coverage/lcov.info | codecov",
+    "dist": "trash dist && npm run lint-production && npm run prettier-production && npm run test && tsc",
+    "postdist": "trash ./dist/index.test.{d.ts,js,js.map}",
+    "lint": "tslint --fix ./*.ts",
+    "lint-production": "tslint ./*.ts",
+    "prepare": "npm run dist",
+    "prepush": "npm run prettier-production",
+    "prettier": "prettier --config ./.prettierrc --write ./*.{md,ts}",
+    "prettier-production": "prettier --config ./.prettierrc --list-different ./*.{md,ts}",
+    "remove-coverage": "trash coverage",
+    "test": "npm run remove-coverage && jest"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "*.ts"
+    ],
+    "coverageDirectory": "coverage",
+    "mapCoverage": true,
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "testEnvironment": "node",
+    "testRegex": ".test.ts$",
+    "transform": {
+      ".ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^22.1.1",
+    "codecov": "^3.0.0",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "prettier": "^1.10.2",
+    "trash-cli": "^1.4.0",
+    "ts-jest": "^22.0.2",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.7.0",
+    "typescript": "^2.7.1"
+  }
+}
