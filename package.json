@@ -1,7 +1,7 @@
 {
   "name": "map-prop",
   "description": "Maps a property on an Object and returns a new Object",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "repository": "christianhg/map-prop",
   "author": {
